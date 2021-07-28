@@ -40,7 +40,7 @@ void init() {
   selected_square = new PVector(0, 0);
 
   chance = "white";
-  
+
   loadAudio();
 }
 
@@ -52,30 +52,28 @@ void loadAudio() {
 
 void draw() {
 
-  background(0);
+  background(143, 0, 255);
   noStroke();
 
   for (int file = 0; file < 8; file++) {
     for (int rank = 0; rank < 8; rank++) {
       if ((file + rank) % 2 == 0) {
-        fill(255);
+        fill(180);
       } else {
-        fill(128);
+        fill(100);
       }
       rect(left_padding + file * square_length, top_padding + rank * square_length, square_length, square_length);
     }
   }
 
   for (Piece piece : pieces) {
-    if (piece.isAlive) {
-      piece.draw();
-    }
+    piece.draw();
   }
 
   if (selected) {
 
     for (PVector move : moves) {
-      fill(255, 0, 0);
+      fill(255, 255, 0);
       ellipse(left_padding + (move.x + 0.5) * square_length, top_padding + (7 - move.y + 0.5) * square_length, 25, 25);
     }
     noFill();
@@ -85,6 +83,9 @@ void draw() {
   }
 
   fill(255);
+  textSize(50);
+  text("Chess: Two Player", width / 2, 50);
+  textSize(30);
   text("Chance: " + chance, width / 2, height - 50);
 }
 
